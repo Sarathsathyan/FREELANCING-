@@ -1,0 +1,26 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#</body>#}
+{#</html>#}
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block branding %}
+
+    <h1 id="head">
+    Welcome Freelancer admin
+    </h1>
+
+{% endblock %}
+
+{%  block extrastyle %}
+
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+
+
+{% endblock %}

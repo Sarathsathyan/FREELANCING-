@@ -26,7 +26,9 @@ SECRET_KEY = 'ortj&k0#bl!l39sfu1!(8(g(0v1bqeoysbhs(8z)7&v#1z)^uf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '18.220.48.231', 'localhost', '127.0.0.1'
+]
 
 
 # Application definition
@@ -40,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'firstapp',
     'accounts',
+    'listings',
+    'clients',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +135,8 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR, 'firstproject/static')
 
 ]
+
+# Media Folder Settings
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
