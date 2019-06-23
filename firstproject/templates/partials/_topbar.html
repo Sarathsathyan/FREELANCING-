@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 {% load static %}
 <html lang="en">
 <head>
@@ -7,6 +6,7 @@
 </head>
 <body>
 <!-- Top Bar -->
+{% comment %}
   <section id="top-bar" class="p-3">
     <div class="container">
       <div class="row">
@@ -42,5 +42,38 @@
       </div>
     </div>
   </section>
+{% endcomment %}
+ <header id="home">
+    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="item active" style="background-image:url('../static/img/slider/1.jpg'); height: 690px;">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">Welcome to <span>Freelancer</span></h1>
+            <p class="animated fadeInRightBig">Freelancer - Responsive Design - Retina Ready - Parallax</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
+          </div>
+        </div>
+        <div class="item" style="background-image: url('../static/img/slider/2.jpg'); height: 690px;">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">Say Hello to <span>Freelancer</span></h1>
+            <p class="animated fadeInRightBig">In-Lancer ! Explore your ideas</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
+          </div>
+        </div>
+        <div class="item" style="background-image: url('../static/img/slider/3.jpg'); height: 690px;">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">We are <span>Creative</span></h1>
+            <p class="animated fadeInRightBig">Hire Freelancers ! Make things happen</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
+          </div>
+        </div>
+      </div>
+      <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+      <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+
+      <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a>
+
+    </div><!--/#home-slider-->
+ </header>
 </body>
 </html>

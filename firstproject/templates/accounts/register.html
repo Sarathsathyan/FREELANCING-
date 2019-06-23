@@ -1,188 +1,148 @@
 {% extends 'base.html' %}
+
 {% block content %}
-
-{#<section id="register" class="bg-light py-5">#}
-{#    <div class="container">#}
-{#      <div class="row">#}
-{#        <div class="col-md-6 mx-auto">#}
-{#          <div class="card">#}
-{#            <div class="card-header bg-primary text-white">#}
-{#              <h4>#}
-{#                <i class="fas fa-user-plus"></i> Register</h4>#}
-{#            </div>#}
-{#            <div class="card-body">#}
-{#                <form action="{% url 'register' %}" method="post">#}
-{#                    {% csrf_token %}#}
-{#                  <div class="form-group">#}
-{#                  <label for="first_name">First Name</label>#}
-{#                  <input type="text" name="first_name" class="form-control" required>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                  <label for="last_name">Last Name</label>#}
-{#                  <input type="text" name="last_name" class="form-control" required>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                  <label for="username">Username</label>#}
-{#                  <input type="text" name="username" class="form-control" required>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                  <label for="email">Email</label>#}
-{#                  <input type="email" name="email" class="form-control" required>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                  <label for="password2">Password</label>#}
-{#                  <input type="password" name="password" class="form-control" required>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                  <label for="password">Confirm Password</label>#}
-{#                  <input type="password" name="password2" class="form-control" required>#}
-{#                </div>#}
-{#                <input type="submit" value="Register" class="btn btn-secondary btn-block">#}
-{#              </form>#}
-{#                <script>#}
-{#                    $(document).ready(function () {#}
-{#                        $(".btn-block").click(function () {#}
-{#                            $(".form-group").hide();#}
-{#                            #}
-{#                        });#}
-{#                    });#}
-{##}
-{#                </script>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#      </div>#}
-{#    </div>#}
-{#  </section>#}
+    {% include 'partials/_navbar.html' %}
+<body>
 
 
-<!-- multistep form -->
-
-<form id="msform" action="{% url 'register' %}" method="post">
-{% csrf_token %}
-    {{ form.as_p }}
-  <!-- progressbar -->
-  <ul id="progressbar">
-    <li class="active">Account Setup</li>
-    <li>Social Profiles</li>
-    <li>Personal Details</li>
-  </ul>
-  <!-- fieldsets -->
-  <fieldset id="ll">
-    <h2 class="fs-title">Create your account</h2>
-    <h3 class="fs-subtitle">This is step 1</h3>
-    <input type="text" name="email" placeholder="Email" required />
-    <input type="password" name="pass" placeholder="Password" />
-    <input type="password" name="cpass" placeholder="Confirm Password" />
-    <input type="button" name="next" class="next action-button" value="Next" />
-  </fieldset>
-  <fieldset>
-    <h2 class="fs-title">Social Profiles</h2>
-    <h3 class="fs-subtitle">Your presence on the social network</h3>
-    <input type="text" name="twitter" placeholder="Twitter" />
-    <input type="text" name="facebook" placeholder="Facebook" />
-    <input type="text" name="gplus" placeholder="Google Plus" />
-    <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="button" name="next" class="next action-button" value="Next" />
-  </fieldset>
-  <fieldset>
-    <h2 class="fs-title">Personal Details</h2>
-    <h3 class="fs-subtitle">We will never sell it</h3>
-    <input type="text" name="fname" placeholder="First Name" />
-    <input type="text" name="lname" placeholder="Last Name" />
-    <input type="text" name="phone" placeholder="Phone" />
-    <textarea name="address" placeholder="Address"></textarea>
-    <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="submit" name="submit" class="submit action-button" value="Submit" />
-  </fieldset>
-</form>
-
-    <script>
-
-//jQuery time
-var current_fs, next_fs, previous_fs; //fieldsets
-var left, opacity, scale; //fieldset properties which we will animate
-var animating; //flag to prevent quick multi-click glitches
-
- $(document).ready(function () {
-        $('#msform').validate();
+<script>
+    $(document).ready(function(){
+    $("#student").click(function(){
+        $("#form1").toggle();
+        $("#form2").css("display","none");
 
     });
+    $("#employee").click(function(){
+        $("#form2").toggle();
+        $("#form1").css("display","none");
 
-
-$(".next").click(function(){
-	if(animating) return false;
-	animating = true;
-
-	current_fs = $(this).parent();
-	next_fs = $(this).parent().next();
-
-	//activate next step on progressbar using the index of next_fs
-	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-	//show the next fieldset
-	next_fs.show();
-	//hide the current fieldset with style
-	current_fs.animate({opacity: 0}, {
-		step: function(now, mx) {
-			//as the opacity of current_fs reduces to 0 - stored in "now"
-			//1. scale current_fs down to 80%
-			scale = 1 - (1 - now) * 0.2;
-			//2. bring next_fs from the right(50%)
-			left = (now * 50)+"%";
-			//3. increase opacity of next_fs to 1 as it moves in
-			opacity = 1 - now;
-			current_fs.css({
-        'transform': 'scale('+scale+')',
-        'position': 'absolute'
-      });
-			next_fs.css({'left': left, 'opacity': opacity});
-		},
-		duration: 800,
-		complete: function(){
-			current_fs.hide();
-			animating = false;
-		},
-		//this comes from the custom easing plugin
-		easing: 'easeInOutBack'
-	});
+    });
 });
-$(".previous").click(function(){
-	if(animating) return false;
-	animating = true;
+</script>
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    {% include 'partials/_alerts.html' %}
+                    <h2 class="title">Get Your free account</h2>
+                    <div class="p-t-10">
+                      <div class="row row-space">
+                        <div class="col-2">
+                        <button class="btn btn--radius-2 btn--blue" type="button" id="student">Register Here</button>
+                      </div>
+                      </div>
+                    </div>
+                    {% comment %}Alerts{% endcomment %}
 
-	current_fs = $(this).parent();
-	previous_fs = $(this).parent().prev();
+                    <form {% url 'register' %} method="POST" id="form1">
+                        {% csrf_token %}
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">first name</label>
+                                    <input class="input--style-4" type="text" name="first_name" id="fname" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">last name</label>
+                                    <input class="input--style-4" type="text" name="last_name" id="lname" required>
+                                </div>
+                            </div>
+                        </div>
 
-	//de-activate current step on progressbar
-	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+                        <div class="row row-space">
+                        <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="email" name="email" id="email" required>
+                                </div>
 
-	//show the previous fieldset
-	previous_fs.show();
-	//hide the current fieldset with style
-	current_fs.animate({opacity: 0}, {
-		step: function(now, mx) {
-			//as the opacity of current_fs reduces to 0 - stored in "now"
-			//1. scale previous_fs from 80% to 100%
-			scale = 0.8 + (1 - now) * 0.2;
-			//2. take current_fs to the right(50%) - from 0%
-			left = ((1-now) * 50)+"%";
-			//3. increase opacity of previous_fs to 1 as it moves in
-			opacity = 1 - now;
-			current_fs.css({'left': left});
-			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
-		},
-		duration: 800,
-		complete: function(){
-			current_fs.hide();
-			animating = false;
-		},
-		//this comes from the custom easing plugin
-		easing: 'easeInOutBack'
-	});
-});
-$(".submit").click(function(){
-	return false;
-})
-    </script>
+                        </div>
+                            <div class="col-2">
+
+                                 <div class="input-group">
+                                    <label class="label">Username</label>
+                                    <input class="input--style-4" type="text" name="username" id="username" required>
+                                 </div>
+
+                            </div>
+                        </div>
+                         <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Password</label>
+                                    <input class="input--style-4" type="password" name="password" id="pass" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Conform Password</label>
+                                    <input class="input--style-4" type="password" name="password2" id="cpass" required>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="input-group">
+                            <label class="label">Select your role</label>
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="subject" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
+                                    <option disabled="disabled" selected="selected">select your Area</option>
+                                    <option value="1">Student</option>
+                                    <option value="2">Employee</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                        <div class="p-t-15">
+                            <input type="submit" id="submit" class="btn btn-primary"  value="Register">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% comment %}<script>
+    $(document).on('submit','#form1', function(e) {
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            path:'/accounts/',
+            data:{
+                first_name:$('#fname').val(),
+                last_name:$('#lname').val(),
+                email:$('#email').val(),
+                username: $('#username').val(),
+                password: $('#pass').val(),
+                password2:$('#cpass').val(),
+                csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success:function () {
+                window.location.href = "{% url 'dashboard' %}";
+
+            }
+
+        });
+
+    });
+</script>{% endcomment %}
+    <footer id="footer">
+     <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+      <div class="container text-center">
+        <div class="social-icons">
+          <ul>
+            <li><a class="envelope" href="#"><i class="fa fa-envelope"></i></a></li>
+            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a class="tumblr" href="#"><i class="fa fa-tumblr-square"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
 {% endblock %}

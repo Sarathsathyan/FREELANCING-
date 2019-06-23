@@ -2822,7 +2822,7 @@ input[type="button"].btn-block {
 
 .navbar-nav {
   display: flex;
-  flex-direction: column;
+  flex-direction:row;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none; }
