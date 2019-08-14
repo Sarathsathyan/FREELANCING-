@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'partials/_navbar.html' %}
+<form {% url 'stu_profile' %} method="POST">
+{% csrf_token %}
+<div class="container box">
+    <div class="card">
+            <h2 class="title info head">Contact Informations</h2>
+    </div>
+    <div class="card card-4">
+        <div class="row row-space">
+            <div class="col-2 col space">
+                <div class="input-group">
+
+                    {% comment %}<input class="input--style-4" type="text" name="first_name" id="fname" placeholder="state" required>{% endcomment %}
+                    <select name="state" class="input--style-4 state" >
+                        <option disabled="disabled" selected="selected">{% if state %}{{ state }}{% else %} state {% endif %}</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="TamilNadu">Tamilnadu</option>
+                        <option value="fiat">Karnataka</option>
+                        <option value="audi">Rajastan</option>
+                        <option value="saab">Uttar Pradesh</option>
+                        <option value="fiat">Maharashtra</option>
+                        <option value="audi">Gujarat</option>
+                        <option value="saab">Jammu</option>
+                        <option value="fiat">Bihar</option>
+                        <option value="audi">Andhra</option>
+
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="col-2 col space">
+                <div class="input-group">
+                    <input class="input--style-4" type="text" name="district"  placeholder="{% if district %}{{ district }}{% else %} district {% endif %}" required>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-space">
+            <div class="col-2 col space">
+                <div class="input-group">
+                    <input class="input--style-4" type="text" name="place" placeholder="{% if place %}{{ place }}{% else %} place {% endif %}" required>
+                </div>
+            </div>
+            <div class="col-2 col">
+
+                <div class="input-group space">
+                    <input class="input--style-4" type="text" name="pincode" placeholder="{% if pincode %}{{ pincode }}{% else %} pincode {% endif %}" required>
+                </div>
+            </div>
+        </div>
+        <div class="row row-space">
+            <div class="col-2 col space">
+
+                <div class="input-group">
+
+                    <input class="input--style-4" type="text" name="address"  placeholder="{% if address %}{{ address }}{% else %} address {% endif %}" required>
+                </div>
+            </div>
+
+            <div class="col-2 col space">
+
+                <div class="input-group">
+                    <input class="input--style-4" type="text" name="first_name" placeholder="Address Line 2" required>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% comment %} College Details {% endcomment %}
+<div class="container box2">
+    <div class="card card-4">
+        <div class="card">
+            <h2 class="title info head">Education</h2>
+        </div>
+        <div class="card card-4">
+            <div class="row row-space">
+                <div class="col-2 col space">
+                    <div class="input-group">
+                        <input class="input--style-4" type="text" name="college"  placeholder="{% if college %}{{ college }}{% else %} college {% endif %}" required>
+                    </div>
+                </div>
+                <div class="col-2 col space">
+                    <div class="input-group">
+                        <input class="input--style-4" type="text" name="course" placeholder="{% if course %}{{ course }}{% else %} course {% endif %}" required>
+                    </div>
+                </div>
+            </div>
+            <textarea rows="3" cols="50" class="text" placeholder="{% if skill %}{{ skill }}{% else %} Enter your skills {% endif %}" name="skill"></textarea>
+
+            <div class="row row-space space">
+                <div class="col-2 col space ">
+                    <div class="input-group">
+                        <input class="input--style-4" type="text" name="nick" placeholder="{% if nick %}{{ nick }}{% else %} nick name {% endif %}" required>
+                    </div>
+
+                </div>
+                <div class="col-2 col space">
+                    <div class="input-group">
+                        <input class="input--style-4" type="file" name="pic" placeholder="upload photo" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% comment %}
+               QUALIFICATION
+{% endcomment %}
+<div class="container Box3">
+    <div class="card card-4">
+        <div class="card">
+
+            <h2 class="title info head">Project Details</h2>
+        </div>
+        <div class="input-group">
+                        <input class="input--style-4" type="text" name="project" placeholder="{% if project %}{{ project }}{% else %} project {% endif %}" required>
+        </div>
+         <label class="label">Decription about Project</label>
+        <div class="card card-4">
+            <textarea rows="4" cols="50" class="textarea" placeholder="{% if description %}{{ description }}{% else %} Description about your project{% endif %}"name="descrip"></textarea></textarea>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="p-t-15 ">
+    <input type="submit" id="submit" class="btn btn-primary butt"  value="Submit">
+</div>
+</form>
+{% endblock %}

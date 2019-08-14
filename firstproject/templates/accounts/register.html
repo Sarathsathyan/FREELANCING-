@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
     {% include 'partials/_navbar.html' %}
 <body>
@@ -17,6 +16,7 @@
         $("#form1").css("display","none");
 
     });
+
 });
 </script>
 <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
@@ -82,13 +82,14 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="input-group">
+                         <div class="row row-space">
                             <label class="label">Select your role</label>
-                            <div class="rs-select2 js-select-simple select--no-search">
+                            <div class="styled-select slate">
                                 <select name="subject" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
-                                    <option disabled="disabled" selected="selected">select your Area</option>
+                                    <option disabled="disabled" selected="selected">select your Role</option>
                                     <option value="1">Student</option>
                                     <option value="2">Employee</option>
+                                    <option value="3">Client</option>
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
@@ -98,6 +99,7 @@
                         </div>
                     </form>
                 </div>
+
             </div>
 
         </div>

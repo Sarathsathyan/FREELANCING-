@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'accounts',
     'listings',
     'clients',
-    'student',
+    'Student'
 ]
 
 MIDDLEWARE = [

@@ -94,3 +94,14 @@ img {
     font-size: 30px; }
   #showcase-inner h1 {
     font-size: 40px; } }
+
+
+/*  register */
+.col-2{
+      flex: 1 0 16.66667%;
+    max-width: 50.66667%;
+}
+
+.label{
+  font-weight: 400;
+}

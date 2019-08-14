@@ -8,17 +8,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Freelancer !</title>
-
-     {% comment %}<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">{% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-     <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}?version=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}?version=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link rel="stylesheet" type="text/css" href="{% static 'css/icons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/all.css' %}">
     {% comment %}Registeration{% endcomment %}
-
-   {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'js/vendor/datepicker/daterangepicker.css' %}?version=1">
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'js/vendor/datepicker/daterangepicker.css' %}?version=1">
     <link rel="stylesheet" type="text/css" href="{% static 'js/vendor/select2/select2.min.css' %}">{% endcomment %}
     <link rel="stylesheet" type="text/css" href="{% static 'js/vendor/mdi-font/css/material-design-iconic-font.css' %}">
     {% comment %}---------------{% endcomment %}
@@ -28,57 +25,44 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}?version=1">
     <link rel="stylesheet" type="text/css" href="{% static 'css/presets/preset1.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
-
-
-
-
-
+    {% comment %}Student{% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/student.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/client.css' %}">
     <script src="{% static 'js/jquery.js' %}"></script>
-
        <script>
             src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
             integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
             crossorigin="anonymous"
        </script>
-
     <script src="{% static 'js/html5shiv.js' %}"></script>
     <script src="{% static 'js/respond.min.js' %}"></script>
-
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="images/favicon.ico">
-
     {# Jquery #}
- <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
-
+    {% comment %} Jquery Validation {% endcomment %}
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"></script>
 </head>
 <body>
 
 {% comment %}{% include 'partials/_navbar.html' %}{% endcomment %}
 
 {% block content %}
-
-
 {% endblock %}
-
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
 <script src="{% static 'js/jquery.inview.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/wow.min.js' %}"></script>
-
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <script src="{%  static 'js/vendor/select2/select2.min.js' %}"></script>{% comment %}Registeration{% endcomment %}
 <script src="{%  static 'js/vendor/datepicker/moment.min.js' %}"></script>{% comment %}Registeration{% endcomment %}
 <script src="{%  static 'js/vendor/datepicker/daterangepicker.js' %}"></script>{% comment %}Registeration{% endcomment %}
 <script src="{%  static 'js/vendor/datepicker/moment.min.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 {% comment %}<script src="{% static 'js/mousescroll.js' %}"></script>
 <script src="{% static 'js/smoothscroll.js' %}"></script>{% endcomment %}
 <script src="{% static 'js/main.js' %}"></script>
-
 </body>
-
-
 </html>

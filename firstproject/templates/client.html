@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Freelancer !</title>
+
+{#     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">#}
+ <link rel="stylesheet" type="text/css" href="{% static 'css/icons.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/client-dashboard.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/colors/blue.css' %}">
+
+</head>
+<body>
+
+{#{% include 'partials/_navbar.html' %}#}
+
+{% block content %}
+
+
+{% endblock %}
+
+
+{# CLIENT JAVASCRIPT #}
+<script src="{% static 'js/client/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/client/jquery-migrate-3.0.0.min.js' %}"></script>
+<script src="{% static 'js/client/mmenu.min.js' %}"></script>
+<script src="{% static 'js/client/tippy.all.min.js' %}"></script>
+<script src="{% static 'js/client/simplebar.min.js' %}"></script>
+<script src="{% static 'js/client/bootstrap-slider.min.js' %}"></script>
+<script src="{% static 'js/client/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'js/client/snackbar.js' %}"></script>
+<script src="{% static 'js/client/clipboard.min.js' %}"></script>
+<script src="{% static 'js/client/counterup.min.js' %}"></script>
+<script src="{% static 'js/client/magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/client/slick.min.js' %}"></script>
+<script src="{% static 'js/client/custom.js' %}"></script>
+
+</body>
+
+
+</html>

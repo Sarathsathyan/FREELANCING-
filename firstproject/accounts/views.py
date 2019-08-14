@@ -36,7 +36,6 @@ def register(request):
                     pk = user._get_pk_val()
                     var = Profile(u_id=pk,role=role,id=pk)
                     var.save()
-                    # return HttpResponse('')
                     messages.success(request,"Registered successfully")
                     return redirect('login')
 
@@ -51,19 +50,22 @@ def login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-
         user = auth.authenticate(username=username, password=password)
-
         if user is not None:
             check = Profile.objects.get(u_id=user._get_pk_val())
             if check.role == 1:
                 auth.login(request, user)
-
                 return redirect('../student/dashboard')
-                messages.success(request, 'Welcome Student')
-            else:
+
+            elif check.role == 2:
+
                 messages.success(request, 'Welcome Employee')
                 return redirect('../listings/')
+            else:
+                auth.login(request,user)
+                messages.success(request,'Welcome Client')
+                return redirect('clients')
+
 
         else:
             messages.error(request,'Invalid inputs')
@@ -74,7 +76,11 @@ def login(request):
 
 
 def logout(request):
-    return redirect('index')
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request,'You are logged out')
+        return redirect('index')
+
 
 def dashboard(request):
     return render(request,'accounts/dashboard.html')

@@ -1,0 +1,87 @@
+
+body{
+    /*background: #F2F2F2;;*/
+}
+.profile{
+    float: right;
+    font-weight: bold;
+}
+
+/*view profile*/
+
+.view-pro{
+    float: right;
+}
+
+.box{
+
+    margin-top: 100px;
+    width: 44%;
+    float: left;
+    /* padding-left: 46px; */
+    margin-left: 73px;
+    border-radius: 5px;
+
+
+}
+.box2{
+
+    margin-top: 100px;
+    border-radius: 5px;
+    float: right;
+    width: 44%;
+    margin-right: 73px;
+}
+.info{
+    text-align: center;
+}
+.col{
+    width: calc((80% - 30px) / 2);
+
+}
+
+/* state*/
+.state{
+    width: 14em;
+    height: 47px;
+
+}
+/*BOX 3*/
+.Box3{
+
+
+    margin-top: 60px;
+    border-radius: 5px;
+    float: right;
+    width: 89.5%;
+    margin-right: 69px;
+}
+.space{
+    margin-top: 8px;
+}
+.head{
+    background: #F9F9F9;
+    height: 50px;
+}
+.title{
+        margin-bottom: 1px;
+}
+
+/*Text area*/
+.textarea{
+    width: 1106px;
+    height: 120px;
+}
+.text{
+    width: 493px;
+        height: 64px;
+    margin-left: 37px;
+}
+
+.butt{
+    width: 21%;
+    margin-top: 25px;
+    margin-right: 84px;
+    float: right;
+    /* margin-left: 179px; */
+}

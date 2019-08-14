@@ -3,11 +3,32 @@ from datetime import datetime
 # Create your models here.
 
 class Client(models.Model):
+    client_id = models.IntegerField(null=True)
     name = models.CharField(max_length=200)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
-    description = models.TextField(blank=True)
     phone = models.CharField(max_length=20)
-    email = models.CharField(max_length=50)
-    hire_date = models.DateTimeField(default=datetime.now,blank=True)
+    country = models.CharField(max_length=100,null=True)
+    department = models.CharField(max_length=100,null=True)
+    role = models.CharField(max_length=100,null=True)
+
     def __str__(self):
         return self.name
+
+class PostJob(models.Model):
+    client = models.ForeignKey(Client, on_delete=models.DO_NOTHING)
+    jobtitle = models.CharField(max_length=100)
+    jobtype = models.CharField(max_length=100)
+    jobcategory = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    salary = models.CharField(max_length=100)
+    tags = models.CharField(max_length=50)
+    jobdescription = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.jobtitle
+
+
+
+
+
+

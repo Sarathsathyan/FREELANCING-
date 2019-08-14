@@ -17,15 +17,81 @@
             <h1 style="color:blue">In-<span style="color:white">Lancer </span></h1>
           </a>
         </div>
-        <div class="collapse navbar-collapse">
+                <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="scroll active"><a href="{% url 'index' %}">Home</a></li>
+            <li
+            {% if '/' == request.path %}
+                    class="nav-item active mr-3"
+
+            {% else %}
+                    class="nav-item mr-3"
+            {% endif %}
+            ><a href="{% url 'index' %}">Home</a></li>
             <li class="scroll"><a href="#services">Service</a></li>
-              <li class="scroll"><a href="{% url 'listings' %}">Listings</a></li>
-            <li class="scroll"><a href="{% url 'about' %}">About Us</a></li>
-            <li class="scroll"><a href="{% url 'register' %}">Register</a></li>
-            <li class="scroll"><a href="{% url 'login' %}">Login</a></li>
-            <li class="scroll"><a href="">Post Job</a></li>
+          <li class="scroll"><a href="{% url 'listings' %}">Listings</a></li>
+            <li
+                    {% if 'about' in request.path %}
+                    class="nav-item active mr-3"
+
+            {% else %}
+                    class="nav-item mr-3"
+            {% endif %}
+
+            ><a href="{% url 'about' %}">About Us</a></li>
+              {% if user.is_authenticated %}
+              <li
+                      {% if 'dashboard' in request.path %}
+                          class="nav-item active mr-3"
+                      {% else %}
+                          class="nav-item mr-3"
+                      {% endif %}
+
+              >
+                    <a href="{% url 'student' %}" ></i> Welcome :<span style="color:black">{{ user.username }}</span></a>
+                  <li>
+                  <a href="javascript:{document.getElementById('logout').submit()}"
+                     class="nav-link">
+                      <i class="fas.fa-sign-out-alt"></i>Logout
+                  </a>
+
+                  <form action="{% url 'logout' %}" method="POST" id="logout">
+                      {% csrf_token %}
+                      <input type="hidden">
+                  </form>
+
+
+                  </li>
+              </li>
+                {% else %}
+              <li
+                  {% if 'register' in request.path %}
+                      class ="nav-item active mr-3"
+                  {% else %}
+                      class="nav-item mr-3"
+                  {% endif %}
+
+              >
+              <a class="nav-link" href="{% url 'register' %}">
+                  <i class="fas fa-user-plus"></i>
+                  Register
+              </a>
+              </li>
+
+            <li
+                    {% if 'login' in request.path %}
+                        class="nav-item active mr-3"
+                    {% else %}
+                        class="nav-item mr-3"
+                    {% endif %}
+
+            ><a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+              {% endif %}
+
+          {% if user.is_authenticated %}
+
+          {% else %}
+          <li class="scroll"><a href="{% url 'login' %}">Post Job</a></li>
+          {% endif %}
             <li class="scroll"><a href="#contact">Contact</a></li>
 
           </ul>
@@ -49,8 +115,10 @@
               <i class="fa fa-key"></i>
             </div>
             <div class="service-info">
-              <h3><a href="index.html">Web Development</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+              <h3><a href="{% url 'listings' %}">Web Development</a></h3>
+              <p>
+                  Web development is the work involved in developing a web site for the Internet or an intranet.
+              </p>
             </div>
           </div>
           <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="450ms">
@@ -59,7 +127,7 @@
             </div>
             <div class="service-info">
               <h3><a href="index.html">Design & Creative</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+              <p>Our design and creative services also include packaging design, sensory design, signature system </p>
             </div>
           </div>
           <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="550ms">
@@ -86,7 +154,7 @@
             </div>
             <div class="service-info">
               <h3><a href="index.html">App Development</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+              <p>Mobile app development is the act or process by which a mobile app is developed for mobile devices, such as personal digital assistants, </p>
             </div>
           </div>
           <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="850ms">
@@ -95,7 +163,7 @@
             </div>
             <div class="service-info">
               <h3><a href="index.html">Data science & Analytics</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+              <p>Data science is a multi-disciplinary field that uses scientific methods, processes,algorithms and systems to extract knowledge</p>
             </div>
           </div>
         </div>
@@ -105,7 +173,7 @@
       </div>
     </div>
   </section>
-  <section id="services" class="py-5 bg-secondary text-white">
+{% comment %}  <section id="services" class="py-5 bg-secondary text-white">
     <div class="container">
       <div class="row text-center">
         <div class="col-md-4">
@@ -131,7 +199,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section>{% endcomment %}
 {#  Contact  #}
  <section id="contact">
 

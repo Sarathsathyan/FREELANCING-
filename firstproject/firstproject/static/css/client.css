@@ -1,0 +1,101 @@
+/* Clients Styles */
+.body{
+    background: #1d4354;
+}
+.section{
+    background: white;
+}
+
+.comp{
+    background: white;
+}
+
+.header{
+    color: black;
+    text-align: center;
+}
+
+.grp{
+    position: relative;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #ccc;
+    width:100%;
+}
+.top{
+    margin-top: 50px;
+}
+.second-top{
+    margin-top: 25px;
+}
+.passwrd{
+    margin-right: 0px;
+    width: 496px;
+}
+.submit{
+    line-height: 30px;
+    background-color: darkgreen;
+    margin-left: 145px;
+}
+
+.sec{
+    background-color: white;
+}
+
+.styled-select {
+   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+}
+
+.styled-select.slate {
+   background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+   height: 34px;
+   width: 498px;
+}
+
+.styled-select.slate select {
+    border: 1px solid #ccc;
+    font-size: 16px;
+    height: 34px;
+    width: 498px;
+}
+
+/* --------------  Radio Button -----------------*/
+.role{
+    font-size: 17px;
+    margin-top: 25px;
+    margin-left: 13px;
+}
+.radios{
+     display: block;
+    position: relative;
+    margin: -5px auto;
+    /* height: auto; */
+    width: 485px;
+    padding: 20px
+}
+.radios ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+	overflow: auto;
+}
+ul li{
+
+}
+.radi{
+    width: 10%;
+}
+
+/*------------------------------------------------*/
+
