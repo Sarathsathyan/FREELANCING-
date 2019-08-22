@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script type="text/javascript">
+$(document).ready(function(){
+    {#First div#}
+    $("#div2").hide();    {% comment %}{% endcomment %}
+    $("#div3").hide();
+    $("#div4").hide();
+
+  $("#show2").click(function () {
+      $("#div1").hide();
+      $("#div2").show();
+
+  });
+  {% comment %} div 3  {% endcomment %}
+  $("#show3").click(function () {
+      $("#div1").hide();
+      $("#div2").hide();
+      $("#div3").show();
+
+  });
+  $("#show4").click(function () {
+      $("#div1").hide();
+      $("#div2").hide();
+      $("#div3").hide();
+      $("#div4").show();
+
+  })
+
+});
+function myFunction() {
+  document.getElementById("myTextarea").placeholder = "Where do you live?";
+}
+</script>
+<div class="body">
+  <section id="top-bar" class="p-3 section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <i class="fas fa-phone"></i> 8147907030
+        </div>
+          <div class="col-md-2">
+          <a href="">Already have account?</a>
+          </div>
+          <div class="col-md-8">
+              <div class="social text-right">
+                  <a href="#">
+                      <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="#">
+                      <i class="fab fa-facebook"></i>
+                  </a>
+                  <a href="#">
+                      <i class="fab fa-linkedin"></i>
+                  </a>
+                  <a href="#">
+                      <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="#">
+                      <i class="fab fa-pinterest"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </section>
+    <div class="page-wrapper p-t-100 p-b-100">
+        <div class="wrapper wrapper--w680">
+            <form {% url 'client_main' %} method="POST" id="registration">
+                {% csrf_token %}
+                {% comment %}Complete Your Free Account Setup{% endcomment %}
+                <div class="card card-4" id="div1">
+                    <div class="card-body">
+                        <h2 class="title header">Complete your free account setup</h2>
+                        <div class="row row-space top">
+                            <div class="styled-select slate">
+                                <select name="country">
+                                    <option disabled="disabled" selected="selected">select your Country</option>
+                                    <option value="india">India</option>
+                                    <option value="America">America</option>
+                                    <option value="China">Sreelanka</option>
+                                    <option value="England">England</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Australia">Australia</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="row row-space second-top">
+                            <div class="input-group">
+                                <div class="col-8" style="width: 97.5%">
+                                    <div class="input-group grp passwrd">
+                                        <input class="input--style-1" type="text" placeholder="Mobile number" name="mobile" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-t-10">
+                            <button class="btn btn--radius btn--green submit" id="show2" >Create my account</button>
+                        </div>
+                    </div>
+                </div>
+                {% comment %}############        Improve Experiance               ###########{% endcomment %}
+                <div class="card card-4" id="div2">
+                    <div class="card-body">
+                        <h2 class="title header">Improve your experience</h2>
+
+                        <div class="row row-space top">
+                            <div class="styled-select slate">
+                                <select name = "department" required>
+                                    <option value="india">Which department you work in ?</option>
+                                    <option>Financial or Legal</option>
+                                    <option>Human Resourse</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p class="role">Select your role</p>
+                        <div class="radios">
+                            <ul>
+                                <li>
+                                    <input type="radio" class="radi" name="role" value="manager" checked> Manager or Director<br>
+                                </li>
+                                <li>
+                                    <input type="radio" class="radi" name="role" value="student or intern"> Student or Intern<br>
+                                </li>
+                                <li>
+                                    <input type="radio" class="radi" name="role" value="developer" > Developer<br>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="row row-space second-top">
+                            <div class="input-group">
+                                <div class="col-8" style="width: 97.5%">
+                                    <div class="input-group grp passwrd">
+                                        <input class="input--style-1" type="text" placeholder="What is your company name?" name="cname" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-t-10">
+                            <button class="btn btn--radius btn--green submit" id="show3" >Next Step</button>
+                        </div>
+                    </div>
+                </div>
+
+                {% comment %}#######    About profile     ####### {% endcomment %}
+
+                <div class="card card-4" id="div3">
+                    <div class="card-body">
+                        <h2 class="title header">About Employee</h2>
+                        <div class="row row-space top">
+                                <textarea rows="4" cols="60" placeholder="Your address.." name="about">
+                                </textarea>
+                        </div>
+
+                        <div class="p-t-10">
+                            <button class="btn btn--radius btn--green submit" id="show4" >Next Step</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                {% comment %}       SKILLS         {% endcomment %}
+
+                <div class="card card-4" id="div4">
+                    <div class="card-body">
+                        <h2 class="title header">Skills</h2>
+                        <div class="row row-space second-top">
+                            <div class="input-group">
+                                <div class="col-8" style="width: 97.5%">
+                                    <div class="input-group grp passwrd">
+                                        <input class="input--style-1" type="text" placeholder="skill 1" name="skill1" required>
+                                    </div>
+                                    <div class="input-group grp passwrd">
+                                        <input class="input--style-1" type="text" placeholder="skill 2(optional) " name="skill2" required>
+                                    </div>
+                                    <div class="input-group grp passwrd">
+                                        <input class="input--style-1" type="text" placeholder="skill 3(optional)" name="skill3" required>
+                                    </div>
+                                    <div class="input-group grp passwrd">
+                                        <input class="input--style-1" type="text" placeholder="skill 4(optional)" name="skill4" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="role">Overall rating</p>
+                        <div class="radios">
+                            <ul>
+                                <li>
+                                    <input type="radio" class="radi" name="role" value="4" checked> 4 Star<br>
+                                </li>
+                                <li>
+                                    <input type="radio" class="radi" name="role" value="3"> 3 Star<br>
+                                </li>
+                                <li>
+                                    <input type="radio" class="radi" name="role" value="2" > 2 Star<br>
+                                </li>
+                                <li>
+                                    <input type="radio" class="radi" name="role" value="1" > 1 Star<br>
+                                </li>
+                            </ul>
+                        </div>
+                        </div>
+
+                        <div class="p-t-10">
+                            <button class="btn btn--radius btn--green submit" id="show4" >Create my account</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+{% comment %}    <section id="" class="sec py-5 bg-secondary text-white">
+        <div class="container">
+            <div class="row text-center">
+        <div class="col-md-4">
+            <i class="fas fa-comment fa-4x mr-4"></i>
+            <hr>
+            <h3>Consulting Services</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae, provident iste consequatur
+            hic dignissimos ratione ea quae.</p>
+        </div>
+                <div class="col-md-4">
+                    <i class="fas fa-home fa-4x mr-4"></i>
+                    <hr>
+                    <h3>Propery Management</h3>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae, provident iste consequatur
+            hic dignissimos ratione ea quae.</p>
+
+
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-suitcase fa-4x mr-4"></i>
+                    <hr>
+                    <h3>Renting & Selling</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae, provident iste consequatur
+                        hic dignissimos ratione ea quae.</p>
+                </div>
+            </div>
+        </div>
+    </section>{% endcomment %}
+
+    <footer id="footer">
+     <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+      <div class="container text-center">
+        <div class="social-icons">
+          <ul>
+            <li><a class="envelope" href="#"><i class="fa fa-envelope"></i></a></li>
+            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a class="tumblr" href="#"><i class="fa fa-tumblr-square"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+{% endblock %}

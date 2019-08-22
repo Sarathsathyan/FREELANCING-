@@ -10,12 +10,14 @@ class Client(models.Model):
     country = models.CharField(max_length=100,null=True)
     department = models.CharField(max_length=100,null=True)
     role = models.CharField(max_length=100,null=True)
+    about_company = models.CharField(max_length=200,null=True)
 
     def __str__(self):
         return self.name
 
 class PostJob(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.DO_NOTHING)
+    client = models.ForeignKey(Client, on_delete=models.DO_NOTHING,null=True)
+    Id_client = models.IntegerField(null=True)
     jobtitle = models.CharField(max_length=100)
     jobtype = models.CharField(max_length=100)
     jobcategory = models.CharField(max_length=100)

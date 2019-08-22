@@ -9,9 +9,9 @@
                       <div class="row row-space">
                         <div class="col-4">
                             <h3 style="font-weight:bold">Log in and get to work</h3>
+                         </div>
                       </div>
-                      </div>
-                    </div>
+                </div>
                 <div class="card-body">
 
 
@@ -39,9 +39,18 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-4" style="padding-left:100px">
-                    <a href="login.html" class="btn btn--blue">Sign In with Google</a>
+                <div class="p-t-10">
+                      <div class="row row-space">
+                        <div class="col-4">
+                            <h3 style="margin-top:-32px">Students can !</h3>
+                         </div>
+                      </div>
                 </div>
+                <div class="col-4">
+
+                    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn social">Sign In with Google+</a>
+                </div>
+
             </div>
         </div>
     </div>

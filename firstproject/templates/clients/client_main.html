@@ -18,7 +18,7 @@
 
 				<!-- Logo -->
 				<div id="logo">
-					<a href="{% url 'client_main' %}"><img src="{% static 'img/logo.png' %}" alt="In-Lancer"></a>
+					<a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt="In-Lancer"></a>
 				</div>
 
 				<!-- Main Navigation -->
@@ -27,7 +27,7 @@
 
 						<li><a href="#">Jobs</a>
 							<ul class="dropdown-nav">
-								<li><a href="index-2.html">My Jobs</a></li>
+								<li><a href="{% url 'client_dash' %}">My Jobs</a></li>
 								<li><a href="{% url 'client_main' %}">Post a job</a></li>
 								{% comment %}<li><a href="index-4.html">Home 3</a></li>{% endcomment %}
 							</ul>
@@ -35,10 +35,10 @@
 
 						<li><a href="#">Find Work</a>
 							<ul class="dropdown-nav">
-								<li><a href="browse-companies.html">Browse Companies</a></li>
+
 								<li><a href="single-job-page.html">Job Page</a></li>
-								<li><a href="single-task-page.html">Task Page</a></li>
-								<li><a href="single-company-profile.html">Company Profile</a></li>
+
+								<li><a href="{% url 'company_profile' %}">Company Profile</a></li>
 							</ul>
 						</li>
 
@@ -46,28 +46,20 @@
 							<ul class="dropdown-nav">
 								<li><a href="single-freelancer-profile.html">Freelancer Profile</a></li>
 								<li><a href="dashboard-post-a-job.html">Post a Job</a></li>
-								<li><a href="dashboard-post-a-task.html">Post a Task</a></li>
+
 							</ul>
 						</li>
 
 						<li><a href="#" class="current">Dashboard</a>
 							<ul class="dropdown-nav">
-								<li><a href="dashboard.html">Dashboard</a></li>
+								<li><a href="{% url 'client_dash' %}">Dashboard</a></li>
 								<li><a href="dashboard-messages.html">Messages</a></li>
-								<li><a href="dashboard-reviews.html">Reviews</a></li>
+
 								<li><a href="dashboard-manage-jobs.html">Jobs</a>
 									<ul class="dropdown-nav">
 										<li><a href="dashboard-manage-jobs.html">Manage Jobs</a></li>
 										<li><a href="dashboard-manage-candidates.html">Manage Candidates</a></li>
 										<li><a href="dashboard-post-a-job.html">Post a Job</a></li>
-									</ul>
-								</li>
-								<li><a href="dashboard-manage-tasks.html">Tasks</a>
-									<ul class="dropdown-nav">
-										<li><a href="dashboard-manage-tasks.html">Manage Tasks</a></li>
-										<li><a href="dashboard-manage-bidders.html">Manage Bidders</a></li>
-										<li><a href="dashboard-my-active-bids.html">My Active Bids</a></li>
-										<li><a href="dashboard-post-a-task.html">Post a Task</a></li>
 									</ul>
 								</li>
 								<li><a href="{% url 'client_settings' %}">Settings</a></li>
@@ -179,7 +171,7 @@
 										<!-- Notification -->
 										<li class="notifications-not-read">
 											<a href="#">
-												<span class="notification-avatar status-online"><img src="images/user-avatar-small-03.jpg" alt=""></span>
+												<span class="notification-avatar status-online"><img src="{{ photo.url }}" alt=""></span>
 												<div class="notification-text">
 													<strong>David Peterson</strong>
 													<p class="notification-msg-text">Thanks for reaching out. I'm quite busy right now on many...</p>
@@ -191,7 +183,7 @@
 										<!-- Notification -->
 										<li class="notifications-not-read">
 											<a href="#">
-												<span class="notification-avatar status-offline"><img src="images/user-avatar-small-02.jpg" alt=""></span>
+												<span class="notification-avatar status-offline"><img src="{{ photo }}" alt=""></span>
 												<div class="notification-text">
 													<strong>Sindy Forest</strong>
 													<p class="notification-msg-text">Hi Tom! Hate to break it to you, but I'm actually on vacation until...</p>
@@ -228,7 +220,7 @@
 					<!-- Messages -->
 					<div class="header-notifications user-menu">
 						<div class="header-notifications-trigger">
-							<a href="#"><div class="user-avatar status-online"><img src="{{ photos }}" alt=""></div></a>
+							<a href="#"><div class="user-avatar status-online"><img src="{{ photo.url }}" alt=""></div></a>
 						</div>
 
 						<!-- Dropdown -->
@@ -239,9 +231,9 @@
 
 								<!-- User Name / Avatar -->
 								<div class="user-details">
-									<div class="user-avatar status-online"><img src="images/user-avatar-small-01.jpg" alt=""></div>
+									<div class="user-avatar status-online"><img src="{{ photo.url }}" alt=""></div>
 									<div class="user-name">
-										Sarath <span>Freelancer</span>
+										{{ user.username }} <span>Freelancer</span>
 									</div>
 								</div>
 
@@ -255,9 +247,17 @@
 						</div>
 
 						<ul class="user-menu-small-nav">
-							<li><a href="dashboard.html"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
-							<li><a href="dashboard-settings.html"><i class="icon-material-outline-settings"></i> Settings</a></li>
-							<li><a href="index-logged-out.html"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
+							<li><a href="{% url 'client_dash' %}"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
+							<li><a href="{% url 'client_dash' %}"><i class="icon-material-outline-settings"></i> Settings</a></li>
+							<li><a href="javascript:{document.getElementById('logout').submit()}"
+                     class="nav-link">
+                      <i class="fas.fa-sign-out-alt"></i>Logout
+                  </a>
+
+                  <form action="{% url 'logout' %}" method="POST" id="logout">
+                      {% csrf_token %}
+                      <input type="hidden">
+                  </form></li>
 						</ul>
 
 						</div>
@@ -311,9 +311,9 @@
 					<div class="dashboard-nav-inner">
 
 						<ul data-submenu-title="Start">
-							<li><a href="dashboard.html"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
+							<li><a href="{% url 'client_dash' %}"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
 							<li><a href="dashboard-messages.html"><i class="icon-material-outline-question-answer"></i> Messages <span class="nav-tag">2</span></a></li>
-							<li><a href="dashboard-reviews.html"><i class="icon-material-outline-rate-review"></i> Reviews</a></li>
+
 						</ul>
 
 						<ul data-submenu-title="Organize and Manage">
@@ -322,14 +322,6 @@
 									<li><a href="dashboard-manage-jobs.html">Manage Jobs <span class="nav-tag">3</span></a></li>
 									<li><a href="dashboard-manage-candidates.html">Manage Candidates</a></li>
 									<li><a href="dashboard-post-a-job.html">Post a Job</a></li>
-								</ul>
-							</li>
-							<li><a href="#"><i class="icon-material-outline-assignment"></i> Tasks</a>
-								<ul>
-									<li><a href="dashboard-manage-tasks.html">Manage Tasks <span class="nav-tag">2</span></a></li>
-									<li><a href="dashboard-manage-bidders.html">Manage Bidders</a></li>
-									<li><a href="dashboard-my-active-bids.html">My Active Bids <span class="nav-tag">4</span></a></li>
-									<li><a href="dashboard-post-a-task.html">Post a Task</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -372,7 +364,7 @@
 			<div class="row">
 
 {#                form submission#}
-
+                {% include 'partials/_alerts.html' %}
                 <form {% url 'stu_profile' %} method="POST">
                     {% csrf_token %}
 				<!-- Dashboard Box -->
@@ -395,15 +387,14 @@
                                     <div class="col-xl-4">
                                         <div class="submit-field">
                                             <h5>Job Title</h5>
-
-                                            <input type="text" name ="JobTitle" class="with-border">
+                                            <input type="text" name ="JobTitle" class="with-border" required>
                                         </div>
                                     </div>
 
                                     <div class="col-xl-4">
                                         <div class="submit-field">
                                             <h5>Job Type</h5>
-                                            <select class="selectpicker with-border" data-size="7" name ="JobType" title="Select Job Type">
+                                            <select class="selectpicker with-border" data-size="7" name ="JobType" title="Select Job Type" required>
                                                 <option value="fulltime">Full Time</option>
                                                 <option value="parttime">Part Time</option>
                                                 <option value="internship">Internship</option>
@@ -415,7 +406,7 @@
                                     <div class="col-xl-4">
                                         <div class="submit-field">
                                             <h5>Job Category</h5>
-                                            <select class="selectpicker with-border" data-size="7" name ="JobCategory" title="Select Category">
+                                            <select class="selectpicker with-border" data-size="7" name ="JobCategory" title="Select Category" required>
                                                 <option value="Accounting and Finance">Accounting and Finance</option>
                                                 <option value="Clerical & Data Entry">Clerical & Data Entry</option>
                                                 <option value="Counseling">Counseling</option>
@@ -433,7 +424,7 @@
                                     <div class="col-xl-4">
                                         <div class="submit-field">
                                             <h5>Location</h5>
-                                            <input type="text" name="location" class="with-border">
+                                            <input type="text" name="location" class="with-border" required>
                                         </div>
                                     </div>
 
@@ -443,14 +434,14 @@
                                             <div class="row">
                                                 <div class="col-xl-6">
                                                     <div class="input-with-icon">
-                                                        <input class="with-border" type="text" name="Salary" placeholder="Min">
+                                                        <input class="with-border" type="text" name="Salary" placeholder="Min" required>
                                                         <i class="currency">USD</i>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6">
 
                                                     <div class="input-with-icon">
-                                                        <input class="with-border" type="text" name="salary2" placeholder="Max">
+                                                        <input class="with-border" type="text" name="salary2" placeholder="Max" required>
                                                         <i class="currency">USD</i>
                                                     </div>
                                                 </div>
@@ -463,7 +454,7 @@
                                             <h5>Tags <span>(optional)</span>  <i class="help-icon" data-tippy-placement="right" title="Maximum of 10 tags"></i></h5>
                                             <div class="keywords-container">
                                                 <div class="keyword-input-container">
-                                                    <input type="text" class="keyword-input with-border" name ="tags" placeholder="e.g. job title, responsibilites"/>
+                                                    <input type="text" class="keyword-input with-border" name ="tags" placeholder="e.g. job title, responsibilites" required>
                                                     <button class="keyword-input-button ripple-effect"><i class="icon-material-outline-add"></i></button>
                                                 </div>
                                                 <div class="keywords-list"><!-- keywords go here --></div>
@@ -477,10 +468,10 @@
 
                                         <div class="submit-field">
                                             <h5>Job Description</h5>
-                                            <textarea cols="30" rows="5" class="with-border"></textarea>
+                                            <textarea cols="30" rows="5" class="with-border" name="JobDescription" ></textarea>
                                             <div class="uploadButton margin-top-30">
 
-                                                <input class="uploadButton-input" type="text" name="JobDescription" accept="image/*, application/pdf" id="upload" multiple/>
+                                                <input class="uploadButton-input" type="text"  accept="image/*, application/pdf" id="upload" multiple/>
                                                 <label class="uploadButton-button ripple-effect" for="upload">Upload Files</label>
                                                 <span class="uploadButton-file-name" >Images or documents that might be helpful in describing your job</span>
                                             </div>

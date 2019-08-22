@@ -854,3 +854,16 @@ input {
 #form2{
  display: none;
 }
+
+.social{
+    background: #DD4B39;
+    margin-bottom: 28px;
+    margin-left: 204px;
+    width: 217px;
+    height: 44px;
+    border: none;
+    border-radius: 0px;
+    color: #FFF;
+    font-weight: 500;
+    cursor: pointer;
+}

@@ -28,8 +28,12 @@
             {% endif %}
             ><a href="{% url 'index' %}">Home</a></li>
             <li class="scroll"><a href="#services">Service</a></li>
-          <li class="scroll"><a href="{% url 'listings' %}">Listings</a></li>
-            <li
+           {% if role == 1 %}
+             <li class="scroll"><a href="{% url 'listings' %}">Listings-Internships</a></li>
+           {% elif role == 2 %}
+
+           {% endif %}
+              <li
                     {% if 'about' in request.path %}
                     class="nav-item active mr-3"
 
@@ -45,9 +49,14 @@
                       {% else %}
                           class="nav-item mr-3"
                       {% endif %}
-
               >
-                    <a href="{% url 'student' %}" ></i> Welcome :<span style="color:black">{{ user.username }}</span></a>
+              {% if role == 1 %}
+                  <a href="{% url 'student' %}" ></i> Welcome :<span style="color:black">{{ user.username }}</span></a>
+              {% elif role == 2 %}
+                  <a href="{% url 'student' %}" ></i> Welcom :<span style="color:black">{{ user.username }}</span></a>
+              {% elif role == 3 %}
+                  <a href="{% url 'client_main' %}" ></i> Welcome :<span style="color:black">{{ user.username }}</span></a>
+              {% endif %}
                   <li>
                   <a href="javascript:{document.getElementById('logout').submit()}"
                      class="nav-link">
@@ -270,5 +279,5 @@
         </div>
       </div>
     </div>
-  </footer>
+    </footer>
 {% endblock %}

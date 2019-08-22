@@ -27,58 +27,22 @@
 
 						<li><a href="#">Home</a>
 							<ul class="dropdown-nav">
-								<li><a href="index-2.html">Home 1</a></li>
-								<li><a href="index-3.html">Home 2</a></li>
-								<li><a href="index-4.html">Home 3</a></li>
+								<li><a href="{% url 'client_main' %}">Post Job</a></li>
 							</ul>
 						</li>
 
 						<li><a href="#">Find Work</a>
 							<ul class="dropdown-nav">
-								<li><a href="#">Browse Jobs</a>
-									<ul class="dropdown-nav">
-										<li><a href="jobs-list-layout-full-page-map.html">Full Page List + Map</a></li>
-										<li><a href="jobs-grid-layout-full-page-map.html">Full Page Grid + Map</a></li>
-										<li><a href="jobs-grid-layout-full-page.html">Full Page Grid</a></li>
-										<li><a href="jobs-list-layout-1.html">List Layout 1</a></li>
-										<li><a href="jobs-list-layout-2.html">List Layout 2</a></li>
-										<li><a href="jobs-grid-layout.html">Grid Layout</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Browse Tasks</a>
-									<ul class="dropdown-nav">
-										<li><a href="tasks-list-layout-1.html">List Layout 1</a></li>
-										<li><a href="tasks-list-layout-2.html">List Layout 2</a></li>
-										<li><a href="tasks-grid-layout.html">Grid Layout</a></li>
-										<li><a href="tasks-grid-layout-full-page.html">Full Page Grid</a></li>
-									</ul>
-								</li>
-								<li><a href="browse-companies.html">Browse Companies</a></li>
-								<li><a href="single-job-page.html">Job Page</a></li>
-								<li><a href="single-task-page.html">Task Page</a></li>
-								<li><a href="single-company-profile.html">Company Profile</a></li>
-							</ul>
-						</li>
 
-						<li><a href="#">For Employers</a>
-							<ul class="dropdown-nav">
-								<li><a href="#">Find a Freelancer</a>
-									<ul class="dropdown-nav">
-										<li><a href="freelancers-grid-layout-full-page.html">Full Page Grid</a></li>
-										<li><a href="freelancers-grid-layout.html">Grid Layout</a></li>
-										<li><a href="freelancers-list-layout-1.html">List Layout 1</a></li>
-										<li><a href="freelancers-list-layout-2.html">List Layout 2</a></li>
-									</ul>
-								</li>
-								<li><a href="single-freelancer-profile.html">Freelancer Profile</a></li>
-								<li><a href="dashboard-post-a-job.html">Post a Job</a></li>
-								<li><a href="dashboard-post-a-task.html">Post a Task</a></li>
+								<li><a href="browse-companies.html">Browse Companies</a></li>
+
+								<li><a href="{% url 'company_profile' %}">Company Profile</a></li>
 							</ul>
 						</li>
 
 						<li><a href="#" class="current">Dashboard</a>
 							<ul class="dropdown-nav">
-								<li><a href="dashboard.html">Dashboard</a></li>
+								<li><a href="{% url 'client_dash' %}">Dashboard</a></li>
 								<li><a href="dashboard-messages.html">Messages</a></li>
 								<li><a href="dashboard-bookmarks.html">Bookmarks</a></li>
 								<li><a href="dashboard-reviews.html">Reviews</a></li>
@@ -89,31 +53,12 @@
 										<li><a href="dashboard-post-a-job.html">Post a Job</a></li>
 									</ul>
 								</li>
-								<li><a href="dashboard-manage-tasks.html">Tasks</a>
-									<ul class="dropdown-nav">
-										<li><a href="dashboard-manage-tasks.html">Manage Tasks</a></li>
-										<li><a href="dashboard-manage-bidders.html">Manage Bidders</a></li>
-										<li><a href="dashboard-my-active-bids.html">My Active Bids</a></li>
-										<li><a href="dashboard-post-a-task.html">Post a Task</a></li>
-									</ul>
-								</li>
+								s
 								<li><a href="dashboard-settings.html">Settings</a></li>
 							</ul>
 						</li>
 
-						<li><a href="#">Pages</a>
-							<ul class="dropdown-nav">
-								<li><a href="pages-blog.html">Blog</a></li>
-								<li><a href="pages-pricing-plans.html">Pricing Plans</a></li>
-								<li><a href="pages-checkout-page.html">Checkout Page</a></li>
-								<li><a href="pages-invoice-template.html">Invoice Template</a></li>
-								<li><a href="pages-user-interface-elements.html">User Interface Elements</a></li>
-								<li><a href="pages-icons-cheatsheet.html">Icons Cheatsheet</a></li>
-								<li><a href="pages-login.html">Login & Register</a></li>
-								<li><a href="pages-404.html">404 Page</a></li>
-								<li><a href="pages-contact.html">Contact</a></li>
-							</ul>
-						</li>
+
 
 					</ul>
 				</nav>
@@ -244,7 +189,7 @@
 										<!-- Notification -->
 										<li class="notifications-not-read">
 											<a href="dashboard-messages.html">
-												<span class="notification-avatar status-online"><img src="images/user-avatar-placeholder.png" alt=""></span>
+												<span class="notification-avatar status-online"><img src="{{ photo.url }}" alt=""></span>
 												<div class="notification-text">
 													<strong>Marcin Kowalski</strong>
 													<p class="notification-msg-text">I received payment. Thanks for cooperation!</p>
@@ -296,9 +241,17 @@
 						</div>
 
 						<ul class="user-menu-small-nav">
-							<li><a href="dashboard.html"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
+							<li><a href="{% url 'client_dash' %}"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
 							<li><a href="dashboard-settings.html"><i class="icon-material-outline-settings"></i> Settings</a></li>
-							<li><a href="index-logged-out.html"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
+							<li><a href="index-logged-out.html"><a href="javascript:{document.getElementById('logout').submit()}"
+                     class="nav-link">
+                      <i class="fas.fa-sign-out-alt"></i>Logout
+                  </a>
+
+                  <form action="{% url 'logout' %}" method="POST" id="logout">
+                      {% csrf_token %}
+                      <input type="hidden">
+                  </form></li>
 						</ul>
 
 						</div>
@@ -352,7 +305,7 @@
 					<div class="dashboard-nav-inner">
 
 						<ul data-submenu-title="Start">
-							<li><a href="dashboard.html"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
+							<li><a href="{% url 'client_dash' %}"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
 							<li><a href="dashboard-messages.html"><i class="icon-material-outline-question-answer"></i> Messages <span class="nav-tag">2</span></a></li>
 							<li><a href="dashboard-bookmarks.html"><i class="icon-material-outline-star-border"></i> Bookmarks</a></li>
 							<li><a href="dashboard-reviews.html"><i class="icon-material-outline-rate-review"></i> Reviews</a></li>
@@ -366,14 +319,7 @@
 									<li><a href="dashboard-post-a-job.html">Post a Job</a></li>
 								</ul>
 							</li>
-							<li><a href="#"><i class="icon-material-outline-assignment"></i> Tasks</a>
-								<ul>
-									<li><a href="dashboard-manage-tasks.html">Manage Tasks <span class="nav-tag">2</span></a></li>
-									<li><a href="dashboard-manage-bidders.html">Manage Bidders</a></li>
-									<li><a href="dashboard-my-active-bids.html">My Active Bids <span class="nav-tag">4</span></a></li>
-									<li><a href="dashboard-post-a-task.html">Post a Task</a></li>
-								</ul>
-							</li>
+
 						</ul>
 
 						<ul data-submenu-title="Account">
@@ -428,7 +374,7 @@
 
 								<div class="col-auto">
 									<div class="avatar-wrapper" data-tippy-placement="bottom" title="Change Avatar">
-										<img class="profile-pic" src="images/user-avatar-placeholder.png" alt="" />
+										<img class="profile-pic" src="{{ photo.url   }}" alt="" />
 										<div class="upload-button"></div>
 										<input class="file-upload" type="file" accept="image/*"/>
 									</div>
@@ -440,14 +386,14 @@
 										<div class="col-xl-6">
 											<div class="submit-field">
 												<h5>First Name</h5>
-												<input type="text" class="with-border" value="Tom">
+												<input type="text" class="with-border" value="{{ user.first_name }}">
 											</div>
 										</div>
 
 										<div class="col-xl-6">
 											<div class="submit-field">
 												<h5>Last Name</h5>
-												<input type="text" class="with-border" value="Smith">
+												<input type="text" class="with-border" value="{{ user.last_name }}">
 											</div>
 										</div>
 
@@ -460,11 +406,11 @@
 														<input type="radio" name="account-type-radio" id="freelancer-radio" class="account-type-radio" checked/>
 														<label for="freelancer-radio" class="ripple-effect-dark"><i class="icon-material-outline-account-circle"></i> Freelancer</label>
 													</div>
-
+{% comment %}
 													<div>
 														<input type="radio" name="account-type-radio" id="employer-radio" class="account-type-radio"/>
 														<label for="employer-radio" class="ripple-effect-dark"><i class="icon-material-outline-business-center"></i> Employer</label>
-													</div>
+													</div>{% endcomment %}
 												</div>
 											</div>
 										</div>
@@ -472,7 +418,7 @@
 										<div class="col-xl-6">
 											<div class="submit-field">
 												<h5>Email</h5>
-												<input type="text" class="with-border" value="tom@example.com">
+												<input type="text" class="with-border" value="{{ user.email }}">
 											</div>
 										</div>
 
@@ -682,6 +628,7 @@
 				</div>
 
 				<!-- Dashboard Box -->
+                <form method="post">
 				<div class="col-xl-12">
 					<div id="test1" class="dashboard-box">
 
@@ -690,44 +637,49 @@
 							<h3><i class="icon-material-outline-lock"></i> Password & Security</h3>
 						</div>
 
-						<div class="content with-padding">
-							<div class="row">
-								<div class="col-xl-4">
-									<div class="submit-field">
-										<h5>Current Password</h5>
-										<input type="password" class="with-border">
-									</div>
-								</div>
 
-								<div class="col-xl-4">
-									<div class="submit-field">
-										<h5>New Password</h5>
-										<input type="password" class="with-border">
-									</div>
-								</div>
+                             {% csrf_token %}
 
-								<div class="col-xl-4">
-									<div class="submit-field">
-										<h5>Repeat New Password</h5>
-										<input type="password" class="with-border">
-									</div>
-								</div>
+                            <div class="content with-padding">
+                                <div class="row">
+                                    <div class="col-xl-4">
+                                        <div class="submit-field">
+                                            <h5>Current Password</h5>
+                                            <input type="password" class="with-border" name="current">
+                                        </div>
+                                    </div>
 
-								<div class="col-xl-12">
-									<div class="checkbox">
-										<input type="checkbox" id="two-step" checked>
-										<label for="two-step"><span class="checkbox-icon"></span> Enable Two-Step Verification via Email</label>
-									</div>
-								</div>
-							</div>
-						</div>
+                                    <div class="col-xl-4">
+                                        <div class="submit-field">
+                                            <h5>New Password</h5>
+                                            <input type="password" class="with-border" name="new">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-4">
+                                        <div class="submit-field">
+                                            <h5>Repeat New Password</h5>
+                                            <input type="password" class="with-border" name="conform">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12">
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="two-step" checked>
+                                            <label for="two-step"><span class="checkbox-icon"></span> Enable Two-Step Verification via Email</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
 					</div>
 				</div>
 
 				<!-- Button -->
 				<div class="col-xl-12">
-					<a href="#" class="button ripple-effect big margin-top-30">Save Changes</a>
+					<button class="button ripple-effect big margin-top-30"><i class="icon-feather-plus"></i> Save Changes</button>
 				</div>
+                </form>
 
 			</div>
 			<!-- Row / End -->

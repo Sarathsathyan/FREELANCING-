@@ -55,16 +55,16 @@ def login(request):
             check = Profile.objects.get(u_id=user._get_pk_val())
             if check.role == 1:
                 auth.login(request, user)
+                # data = Profile.objects.all()
                 return redirect('../student/dashboard')
 
             elif check.role == 2:
-
                 messages.success(request, 'Welcome Employee')
-                return redirect('../listings/')
+                return redirect('employeefill')
             else:
-                auth.login(request,user)
-                messages.success(request,'Welcome Client')
-                return redirect('clients')
+                auth.login(request, user)
+                messages.success(request, 'Welcome Client')
+                return redirect('client_main')
 
 
         else:
@@ -78,8 +78,8 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        messages.success(request,'You are logged out')
-        return redirect('index')
+        messages.success(request, 'You are logged out')
+        return redirect('login')
 
 
 def dashboard(request):
